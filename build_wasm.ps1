@@ -5,7 +5,7 @@ if (-not (Test-Path -Path $path -PathType Container)) {
 }
 
 $cFiles = Get-ChildItem -Filter "*.c" | Select-Object -ExpandProperty Name
-& emcc @cFiles -o web/index.js --use-port=sdl3 -s WASM=1
+& emcc @cFiles -o web/index.html --shell-file shell.html --use-port=sdl3 -s WASM=1
 
 
 
