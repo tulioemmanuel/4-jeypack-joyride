@@ -14,7 +14,9 @@ jobs:
           version: 5.0.7
 
       - name: Build WASM
-        run: emcc $(ls *.c | tr '\n' ' ') -o web/index.html --use-port=sdl3 -s WASM=1
+        run: |
+          mkdir -p web
+          emcc $(ls *.c | tr '\n' ' ') -o web/index.html --use-port=sdl3 -s WASM=1
 
       - name: Setup Butler
         uses: remarkablegames/setup-butler@v2
