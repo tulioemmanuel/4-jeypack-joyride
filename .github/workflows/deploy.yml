@@ -22,6 +22,6 @@ jobs:
         uses: remarkablegames/setup-butler@v2
 
       - name: Push to itch.io
-        run: butler push ./web USERNAME/GAME_ID:html5
+        run: butler push ./web tulioemmanuel/4-jetpack-joyride:html5
         env:
           BUTLER_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
