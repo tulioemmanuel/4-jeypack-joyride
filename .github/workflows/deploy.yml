@@ -1,0 +1,25 @@
+name: Deploy to itch.io
+on: push
+
+jobs:
+  itchio-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Emscripten
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: 5.0.7
+
+      - name: Build WASM
+        run: emcc $(ls *.c | tr '\n' ' ') -o web/index.html --use-port=sdl3 -s WASM=1
+
+      - name: Setup Butler
+        uses: remarkablegames/setup-butler@v2
+
+      - name: Push to itch.io
+        run: butler push ./web USERNAME/GAME_ID:html5
+        env:
+          BUTLER_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
