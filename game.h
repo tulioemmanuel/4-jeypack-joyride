@@ -15,7 +15,7 @@ Game* init(GameWindow *);
 void init_stage();
 Object* init_player();
 void get_input(GameWindow *,Game*);
-void update();
+void update(Game*);
 void draw(GameWindow *,Game*);
 
 #endif

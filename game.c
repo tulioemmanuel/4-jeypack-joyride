@@ -16,10 +16,15 @@ void init_stage()
 Object *init_player()
 {
     Object *player = malloc(sizeof(Object));
-    player->pos.h = 100;
-    player->pos.w = 10;
-    player->pos.x = 100;
-    player->pos.y = 100;
+    player->pos.h = PLAYER_H;
+    player->pos.w = PLAYER_W;
+    player->pos.x = 0 + 100;
+    player->pos.y = WINDOW_H - PLAYER_H;
+    player->vX = 0.0f;
+    player->vY = 0.0f;
+    player->aX = 0.0f;
+    player->aY = 0.0f;
+    player->isJumping = false;
     return player;
 }
 
@@ -46,12 +51,20 @@ void get_input(GameWindow *gameWindow, Game *game)
     }
     else if (key_states[SDL_SCANCODE_UP])
     {
-        game->player->pos.y -= 1.0f;
+        game->player->isJumping = true;
+        game->player->aY = 0.5f;
+        
+
     }
 }
 
-void update()
+void update(Game *game)
 {
+    if (game->player->pos.y >= WINDOW_H - PLAYER_H)
+    {
+        game->player->pos.y = WINDOW_H - PLAYER_H;
+        game->player->aY=0.0f;
+    }
 }
 
 void draw(GameWindow *gameWindow, Game *game)

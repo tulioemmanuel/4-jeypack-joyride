@@ -11,7 +11,7 @@ static Game *game;
 void main_loop()
 {
     get_input(gameWindow, game);
-    update();
+    update(game);
     draw(gameWindow, game);
     delay(gameWindow);
 

@@ -6,6 +6,11 @@
 typedef struct
 {
     SDL_FRect pos;
+    float vX;
+    float vY;
+    float aX;
+    float aY;
+    bool isJumping;
 
 } Object;
 
