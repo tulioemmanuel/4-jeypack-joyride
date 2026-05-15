@@ -19,7 +19,7 @@ Object *init_player()
     player->pos.h = PLAYER_H;
     player->pos.w = PLAYER_W;
     player->pos.x = 0 + 100;
-    player->pos.y = WINDOW_H - PLAYER_H;
+    player->pos.y = WINDOW_H - PLAYER_H - 100;
     player->vX = 0.0f;
     player->vY = 0.0f;
     player->aX = 0.0f;
