@@ -1,0 +1,6 @@
+.claude/**
+.vscode/**
+.github/**
+web/**
+*.dll
+*.exe
