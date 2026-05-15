@@ -17,11 +17,12 @@ jobs:
         run: |
           mkdir -p web
           emcc $(ls *.c | tr '\n' ' ') -o web/index.html --use-port=sdl3 -s WASM=1
+          cd web && zip -r ../game.zip . && cd ..
 
       - name: Setup Butler
         uses: remarkablegames/setup-butler@v2
 
       - name: Push to itch.io
-        run: butler push ./web tulioemmanuel/4-jetpack-joyride:html5
+        run: butler push game.zip tulioemmanuel/4-jetpack-joyride:html5
         env:
           BUTLER_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
